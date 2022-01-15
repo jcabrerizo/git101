@@ -17,3 +17,4 @@ To implement the filter modify the local project file `.git/config` to add the f
 replacing "Don Pepito" with your name *in both lines*
 
 Mi nombre es: <MI_NOMBRE>
+Mi apellido es: <MI_APELLIDO>
