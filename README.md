@@ -1,20 +1,23 @@
 # Git 101
 
-cambio22445
-
-hola
-
-Added Mar 29 en nueva rama
+## Git filter
 
 To implement the filter modify the local project file `.git/config` to add the filter:
 
-```
+```properties
 [filter "nameFilter"]
-	clean = sed 's:Don Pepito:<MI_NOMBRE>:g'
-	smudge = sed 's:<MI_NOMBRE>:Don Pepito:g'
+  clean = sed -e 's|My name is: <MY_NAME>|My name is: <MY_NAME>|g' -e 's|My surname is: <MY_SURNAME>|My surname is: <MY_SURNAME>|g' 
+  smudge = sed -e 's|My name is: <MY_NAME>|My name is: <MY_NAME>|g' -e 's|My surname is: <MY_SURNAME>|My name is: Cabrerizo|g'
 ```
 
-replacing "Don Pepito" with your name *in both lines*
+Replacing "Juan" and "Cabrerizo" with your name *in both lines*. This example uses the pipe character as delimitator on the `sed` command
 
-Mi nombre es: <MI_NOMBRE>
-Mi apellido es: <MI_APELLIDO>
+Also addging an entry y the `.gitattribbutes` file in the root of the project is needed, maping each file to be analyzed by the filter with the filter name added to the config file:
+
+```properties
+README.md filter=nameFilter
+```
+
+My name is: <MY_NAME>
+
+My surname is: <MY_SURNAME>
